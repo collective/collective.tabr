@@ -16,8 +16,10 @@
       -->
 
 <javascript
-    id="++resource++jquerytoolstabs.js"
-    cacheable="False" compression="safe" cookable="False"
-    enabled="True" expression="" inline="False" />
+    id="++resource++tabr.js"
+    cacheable="True" compression="safe" cookable="True"
+    enabled="True" expression="" inline="False"
+    insert-after="++resource++plone.app.jquerytools.js"
+    />
 
 </object>

@@ -24,7 +24,7 @@
       -->
 
  <stylesheet title=""
-    id="jquerytoolstabs.css"
+    id="tabrtabs.css"
     media="screen" rel="stylesheet" rendering="import"
     cacheable="True" compression="safe" cookable="True"
     enabled="1" expression="" conditionalcomment="" />

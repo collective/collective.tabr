@@ -54,7 +54,7 @@ wysiwygTabs.collectTabs = function() {
 	
 	// List of tabs as Tab instances
 	if(wysiwygTabs.DEBUG)
-	wysiwygTabs.log("Creating tabs");
+		wysiwygTabs.log("Creating tabs");
 	
 	// Walk through all content nodes which contain tab elements
 	jq("h2."+wysiwygTabs.TAB_MARKER + ", h2."+wysiwygTabs.DEFAULT_TAB_MARKER).parent().each(function() {
@@ -222,18 +222,11 @@ wysiwygTabs.init = function() {
                           jq(function() {
 			    var cID = "#container-" + j;
                             jq(cID +" ul.tabs").tabs(cID + " > div.pane", {
-				//initialIndex : 0,
+				//TODO - pick up index of "default" tab and use for init
+				//initialIndex : 0, 
 				onClick: function(event, tabIndex) {
-					//wysiwygTabs.log("beforeclick tab" + tabIndex);
-					//this.getTabs().parent().addClass('check');
-					//this.getCurrentTab().parent().addClass('check');
 					this.getTabs().parent().removeClass("current");
-					//wysiwygTabs.log("current tab " +this.getCurrentTab().text());
-					//par = this.getTabs().eq(tabIndex).parent();
-					//par.addClass("current");
 					this.getTabs().eq(tabIndex).parent().addClass('current');
-					//wysiwygTabs.log("beforeclick tab" + tabIndex + " parent: "+ par.text());
-					
 				}
 			    }); 
                           });
@@ -244,9 +237,6 @@ wysiwygTabs.init = function() {
 			
 			tocLinks.click(function(){
 				link = jq(this);
-				//name = wysiwygTabs.escape(link.text());
-				//found = tabLinks.find(":contains('"+name+"')");
-				//wysiwygTabs.log("clicked: " + name + ", searching for: " + found);
 				tabLinks.each(function(){
 					tab = jq(this);
 					if(tab.text()==link.text()) {
