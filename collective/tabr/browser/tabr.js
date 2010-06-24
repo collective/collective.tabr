@@ -24,12 +24,12 @@ wysiwygTabs.TAB_MARKER = 'content-tab';
 wysiwygTabs.DEFAULT_TAB_MARKER = 'default-content-tab';
 wysiwygTabs.PANE_END_MARKER = 'hr.pane-break';
 
-wysiwygTabs.ToCFlag = false;
 wysiwygTabs.DEBUG = false;
 
 
 wysiwygTabs.idCounter = 0;
 wysiwygTabs.containerCounter = 0;
+wysiwygTabs.defaults = [];
 
 /**
  * Tab content container
@@ -37,9 +37,8 @@ wysiwygTabs.containerCounter = 0;
  * @param {Object} title, non-html user visible name
  * @param {Object} content, htmlish content
  */
-wysiwygTabs.Tab = function(title, defopen, classes) {
+wysiwygTabs.Tab = function(title, classes) {
 	this.id = null; // Generated later
-	this.defopen = defopen;
 	this.classes = classes;
 	this.title = title;
 	this.content = jq('<div class="'+wysiwygTabs.PANE_CLASS+'"><!-- Dynamically generated pane --></div>');
@@ -61,6 +60,7 @@ wysiwygTabs.collectTabs = function() {
 	
 		var tabs = [];
 		wysiwygTabs.containerCounter++;
+		wysiwygTabs.defaults[wysiwygTabs.containerCounter] = 0;
 		var curTab = null;
 		var container = null;
 		var parent = this;
@@ -85,18 +85,24 @@ wysiwygTabs.collectTabs = function() {
 			    tabs = []; //clear the current buffer because we wrote it out
 			    curTab = null;
                         } else if(t.hasClass(wysiwygTabs.TAB_MARKER) || t.hasClass(wysiwygTabs.DEFAULT_TAB_MARKER)) {		
-			
+				
 				// Create new tab
-				var defopen = t.hasClass(wysiwygTabs.DEFAULT_TAB_MARKER);
+				//var defopen = t.hasClass(wysiwygTabs.DEFAULT_TAB_MARKER);
+				if (t.hasClass(wysiwygTabs.DEFAULT_TAB_MARKER))
+					wysiwygTabs.defaults[wysiwygTabs.containerCounter] = tabs.length;
+					
 				if(wysiwygTabs.DEBUG)
 					wysiwygTabs.log("Making tab: " + t.text());
+					//if (defopen)
+					//	wysiwygTabs.log("Ths is the default");
 				
 				// Remove handler definers, 
 				// so reruns of init won't double create them
 				t.removeClass(wysiwygTabs.TAB_MARKER);
 				t.removeClass(wysiwygTabs.DEFAULT_TAB_MARKER);
 								
-				var tab = new wysiwygTabs.Tab(t.text(), defopen, t.attr('class'));
+				//var tab = new wysiwygTabs.Tab(t.text(), defopen, t.attr('class'));
+				var tab = new wysiwygTabs.Tab(t.text(), t.attr('class'));
 				
 				if(wysiwygTabs.DEBUG)
 					if(t.attr('class')) wysiwygTabs.log("found classes: " + t.attr('class'));
@@ -160,18 +166,8 @@ wysiwygTabs.constructContainer = function(tabs) {
 		// generate <li><a> struct
 		var clicker = jq("<li></li>");
 		clicker.attr({ "class" : classes, "id" : "wysiwygTab-selector-" + tab.id});
-				
-		var link = jq("<a></a>");		
 		
-		//var classes = tab.classses;
-		
-		// Default open selector
-                // XXX NOT NEEDED WITH jQuery Tools
-		//if(tab.open) {
-		//	tab.classes += " current";
-		//} else {
-		//	//classes = "";
-		//}
+		var link = jq("<a></a>");
 		
 		link.attr({
 			id : "wysiwygTab-link-" + tab.id,
@@ -223,7 +219,7 @@ wysiwygTabs.init = function() {
 			    var cID = "#container-" + j;
                             jq(cID +" ul.tabs").tabs(cID + " > div.pane", {
 				//TODO - pick up index of "default" tab and use for init
-				//initialIndex : 0, 
+				initialIndex : wysiwygTabs.defaults[j], 
 				onClick: function(event, tabIndex) {
 					this.getTabs().parent().removeClass("current");
 					this.getTabs().eq(tabIndex).parent().addClass('current');
