@@ -1,0 +1,14 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="collective.tabr">
+
+  <genericsetup:registerProfile
+      name="default"
+      title="Tabbed Containers for Plone"
+      directory="profiles/default"
+      description='User friendly plone.org front page like tabs for all editable content'
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+</configure>
