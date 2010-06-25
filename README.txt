@@ -50,4 +50,5 @@ common.
 
 .. _`jQuery Tools`: http://flowplayer.org/tools/index.html
 .. _`jQuery Tools Tabs`: http://flowplayer.org/tools/tabs/index.html
-.. _`plone.app.jquerytoos`: http://pypi.python.org/pypi/plone.app.jquerytools
+.. _`plone.app.jquerytools`: http://pypi.python.org/pypi/plone.app.jquerytools
+

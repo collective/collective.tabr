@@ -5,7 +5,7 @@ version = '1.1'
 
 setup(name='collective.tabr',
       version=version,
-      description="",
+      description="A simple package to add jQuery Tools Tabs UI support to Plone",
       long_description=open("README.txt").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
