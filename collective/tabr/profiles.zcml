@@ -10,5 +10,13 @@
       description='User friendly plone.org front page like tabs for all editable content'
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
+      
+    <!--
+    <genericsetup:importStep
+        name="tabr_styles"
+        title="Tabr Styles for WYSIWYG editors"
+        description="Import collective.tabr style settings"
+        handler="collective.tabr.setuphandlers.importVarious" />
+    -->
 
 </configure>
