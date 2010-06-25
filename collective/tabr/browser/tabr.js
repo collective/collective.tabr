@@ -87,21 +87,17 @@ wysiwygTabs.collectTabs = function() {
                         } else if(t.hasClass(wysiwygTabs.TAB_MARKER) || t.hasClass(wysiwygTabs.DEFAULT_TAB_MARKER)) {		
 				
 				// Create new tab
-				//var defopen = t.hasClass(wysiwygTabs.DEFAULT_TAB_MARKER);
 				if (t.hasClass(wysiwygTabs.DEFAULT_TAB_MARKER))
 					wysiwygTabs.defaults[wysiwygTabs.containerCounter] = tabs.length;
 					
 				if(wysiwygTabs.DEBUG)
 					wysiwygTabs.log("Making tab: " + t.text());
-					//if (defopen)
-					//	wysiwygTabs.log("Ths is the default");
 				
 				// Remove handler definers, 
 				// so reruns of init won't double create them
 				t.removeClass(wysiwygTabs.TAB_MARKER);
 				t.removeClass(wysiwygTabs.DEFAULT_TAB_MARKER);
-								
-				//var tab = new wysiwygTabs.Tab(t.text(), defopen, t.attr('class'));
+				
 				var tab = new wysiwygTabs.Tab(t.text(), t.attr('class'));
 				
 				if(wysiwygTabs.DEBUG)
@@ -205,45 +201,40 @@ wysiwygTabs.constructContainer = function(tabs) {
  * Page on-load handler.
  */
 wysiwygTabs.init = function() {
-	
-	try {
-		// Check if we are in edit or view mode
-		if(document.designMode.toLowerCase() == "on") {
-			// Edit mode document, do not tabify 
-			// but let the user create the content
-			return;
-		} else {
-			wysiwygTabs.collectTabs();
-			for(var j=1; j <= wysiwygTabs.containerCounter; j++ ) {
-                          jq(function() {
-			    var cID = "#container-" + j;
-                            jq(cID +" ul.tabs").tabs(cID + " > div.pane", {
-				//TODO - pick up index of "default" tab and use for init
-				initialIndex : wysiwygTabs.defaults[j], 
-				onClick: function(event, tabIndex) {
-					this.getTabs().parent().removeClass("current");
-					this.getTabs().eq(tabIndex).parent().addClass('current');
-				}
-			    }); 
-                          });
+	// Check if we are in edit or view mode
+	if(document.designMode.toLowerCase() == "on") {
+		// Edit mode document, do not tabify 
+		// but let the user create the content
+		return;
+	} else {
+		wysiwygTabs.collectTabs();
+		for(var j=1; j <= wysiwygTabs.containerCounter; j++ ) {
+		  jq(function() {
+		    var cID = "#container-" + j;
+		    jq(cID +" ul.tabs").tabs(cID + " > div.pane", {
+			//TODO - pick up index of "default" tab and use for init
+			initialIndex : wysiwygTabs.defaults[j], 
+			onClick: function(event, tabIndex) {
+				this.getTabs().parent().removeClass("current");
+				this.getTabs().eq(tabIndex).parent().addClass('current');
 			}
-			tocLinks = jq("#document-toc a");
-			tabLinks = jq("#content ul.tabs a");
-			var link;
-			
-			tocLinks.click(function(){
-				link = jq(this);
-				tabLinks.each(function(){
-					tab = jq(this);
-					if(tab.text()==link.text()) {
-						tab.click();
-						return false; //we're done, get out
-					}
-				})
-			})
+		    }); 
+		  });
 		}
-	} catch(e) {
-		wysiwygTabs._printStackTrace(e);
+		tocLinks = jq("#document-toc a");
+		tabLinks = jq("#content ul.tabs a");
+		//var link;
+		
+		tocLinks.click(function(){
+			link = jq(this);
+			tabLinks.each(function(){
+				tab = jq(this);
+				if(tab.text()==link.text()) {
+					tab.click();
+					return false; //we're done, get out
+				}
+			})
+		})
 	}
 }
 
@@ -255,7 +246,7 @@ wysiwygTabs.log = function(msg) {
 		}
 	}
 }
-
+/*
 // Debug functions - copied from ecmaunit.js
 wysiwygTabs._printStackTrace = function(exc){
 	
@@ -304,5 +295,5 @@ wysiwygTabs.escape = function(str) {
 	
 	
 }
-
+*/
 jq(wysiwygTabs.init);

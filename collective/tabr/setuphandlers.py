@@ -1,7 +1,3 @@
-from zope.component import getUtility
-
-from Products.TinyMCE.interfaces.utility import ITinyMCE
-
 from Products.CMFCore.utils import getToolByName
 
 STYLES = (
@@ -22,19 +18,23 @@ def importVarious(context):
         return
     
     site = context.getSite()
-
-    tinymce = getUtility(ITinyMCE)
-    if tinymce:
-        tinymce.styles += u'\n'+u'\n'.join([u'|'.join(style) for style in STYLES])
-        log.info("TinyMCE Styles Added")
         
     kupu = getToolByName(site, 'kupu_library_tool', None)
     if kupu is not None:
         all_styles = kupu.getParagraphStyles()
-        for style in STYLES:
-            all_styles += ('|'.join(style),)
-        kupu.configure_kupu(parastyles= all_styles)
-        log.info("Kupu styles added")
+        to_add = {}
+        for title, tag, css in STYLES:
+            to_add[css] = "%s|%s" % (title, tag)
+        
+        for style in all_styles:
+            css_class = style.split('|')[-1]
+            if css_class in to_add:
+                del to_add[css_class]
+
+        if to_add:
+            all_styles += ['|'.join((title,tag,css)) for title, tag, css in STYLES if css in to_add]
+            kupu.configure_kupu(parastyles = all_styles)
+            log.info("kupu styles added")
     
     portal_props = getToolByName(site, 'portal_properties')
     fck_props = getattr(portal_props, 'fckeditor_properties', None)
