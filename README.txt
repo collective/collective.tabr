@@ -38,6 +38,14 @@ of which the second will be pre-selected when the page loads. The second tab
 group will only have a single tab in it, and it will be preceded by a paragraph
 between itself and the end of the previous tab group.
 
+Customizing
+-----------
+
+Styling is based on the `CSS Sliding Doors`_ technique explained by Douglas
+Bowman. CSS is available in the ``tabr`` skin layer for customization, as are
+the example images for the CSS.
+
+
 Dependencies
 ------------
 
@@ -51,4 +59,13 @@ common.
 .. _`jQuery Tools`: http://flowplayer.org/tools/index.html
 .. _`jQuery Tools Tabs`: http://flowplayer.org/tools/tabs/index.html
 .. _`plone.app.jquerytools`: http://pypi.python.org/pypi/plone.app.jquerytools
+.. _`CSS Sliding Doors`: http://www.alistapart.com/articles/slidingdoors2/
 
+Credits
+=======
+
+Thanks to Mikko Ohtamaa for `collecitve.kuputabs`_ which was my inspiration for
+this. Most of the code was his to begin with, and I ripped it appart and made
+*many* changes.
+
+.. _`collective.kuputabs`: http://pypi.python.org/pypi/collective.kuputabs
