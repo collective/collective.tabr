@@ -4,7 +4,8 @@ Changelog
 1.1 - Unreleased
 ----------------
 
-- 
+- Removed locales directory since we don't have any translations
+  [dunlapm]
 
 1.0 - 2010-06-25
 ----------------
