@@ -4,8 +4,6 @@
     xmlns:i18n="http://namespaces.zope.org/i18n"
     i18n_domain="collective.tabr">
 
-  <i18n:registerTranslations directory="locales" />
-  
    <include package=".browser" />
   
    <include file="skins.zcml" />
