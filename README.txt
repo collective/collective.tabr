@@ -62,7 +62,7 @@ common.
 Credits
 =======
 
-Thanks to Mikko Ohtamaa for `collecitve.kuputabs`_ which was my inspiration for
+Thanks to Mikko Ohtamaa for `collective.kuputabs`_ which was my inspiration for
 this. Most of the code was his to begin with, and I ripped it appart and made
 *many* changes.
 
