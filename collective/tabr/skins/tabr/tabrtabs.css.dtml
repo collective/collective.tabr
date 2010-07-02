@@ -116,4 +116,7 @@ body.mceContentBody h2.default-content-tab {
       background-position: left -150px;
       color: #333;
 }
+
+button.kupu-inserthorizontalrule {background-image: url(&dtml-portal_url;/plonekupuimages/hr.gif);}
+
 /* </dtml-with> */

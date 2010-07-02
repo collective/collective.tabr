@@ -202,9 +202,28 @@ wysiwygTabs.constructContainer = function(tabs) {
  */
 wysiwygTabs.init = function() {
 	// Check if we are in edit or view mode
+	jq(function () {
+		jq('.kupu-fulleditor #toolbar').each(function () {
+		  var tb_group = jq(this).find('#kupu-bg-indent');
+		  var b_html = '<span id="#kupu-hr-buttongroup"';
+		  b_html += 'class="kupu-tb-buttongroup">';
+		  b_html += '<button title="Insert a layout table"';
+		  b_html += ' class="kupu-inserthorizontalrule" type="button";>&nbsp;</button>';
+		  b_html += '</span>';
+		  tb_group.after(b_html);
+		});
+		jq('.kupu-inserthorizontalrule').click(function () {
+		  var editor = window.kupu;
+		  var hr = editor.newElement('hr');
+		  //doc = editor.getInnerDocument();
+		  //var hr = doc.createElement('hr');
+		  //var table_tool = editor.getTool('tabletool');
+		  //table_tool.createTable(1, 2, false, 'two-column');
+ 		});
+	});
+
 	if(document.designMode.toLowerCase() == "on") {
-		// Edit mode document, do not tabify 
-		// but let the user create the content
+		//protect against running inside a kupu iframe
 		return;
 	} else {
 		wysiwygTabs.collectTabs();
@@ -212,7 +231,6 @@ wysiwygTabs.init = function() {
 		  jq(function() {
 		    var cID = "#container-" + j;
 		    jq(cID +" ul.tabs").tabs(cID + " > div.pane", {
-			//TODO - pick up index of "default" tab and use for init
 			initialIndex : wysiwygTabs.defaults[j], 
 			onClick: function(event, tabIndex) {
 				this.getTabs().parent().removeClass("current");
@@ -223,7 +241,6 @@ wysiwygTabs.init = function() {
 		}
 		tocLinks = jq("#document-toc a");
 		tabLinks = jq("#content ul.tabs a");
-		//var link;
 		
 		tocLinks.click(function(){
 			link = jq(this);
@@ -246,54 +263,5 @@ wysiwygTabs.log = function(msg) {
 		}
 	}
 }
-/*
-// Debug functions - copied from ecmaunit.js
-wysiwygTabs._printStackTrace = function(exc){
-	
-	function print(msg) {
-		wysiwygTabs.log(msg);
-	}
-	
-	print(exc);
-	
-	if (!exc.stack) {
-		print('no stacktrace available');
-		return;
-	};
-	var lines = exc.stack.toString().split('\n');
-	var toprint = [];
-	for (var i = 0; i < lines.length; i++) {
-		var line = lines[i];
-		if (line.indexOf('ecmaunit.js') > -1) {
-			// remove useless bit of traceback
-			break;
-		};
-		if (line.charAt(0) == '(') {
-			line = 'function' + line;
-		};
-		var chunks = line.split('@');
-		toprint.push(chunks);
-	};
-	toprint.reverse();
-	
-	for (var i = 0; i < toprint.length; i++) {
-		print('  ' + toprint[i][1]);
-		print('    ' + toprint[i][0]);
-	};
-	print();
-}
 
-wysiwygTabs.escape = function(str) {
-	if(!str) return str;
-	var chars = "#;&,.+*~':\"!^$[]()=>|/";
-	var num = chars.length;
-	for(var i=0;i<num;i++) {
-		special = chars.charAt(i);
-		str = str.replace(special,"\\"+special);
-	}
-	return str;
-	
-	
-}
-*/
 jq(wysiwygTabs.init);
