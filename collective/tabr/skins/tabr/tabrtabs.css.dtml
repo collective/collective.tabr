@@ -86,10 +86,10 @@ body#content hr.pane-break,
 body.kupu hr.pane-break,
 body.mceContentBody hr.pane-break {
       display: block;
-      background-color:black;
-      border:5px dashed;
-      color:white;
-      height: 1px;
+      background-color: white;
+      color: white;
+      border-top:5px dashed black;
+      height: 5px;
       margin:0.5em 0 1em;
 }
 

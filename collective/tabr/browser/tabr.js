@@ -22,7 +22,8 @@ wysiwygTabs.PANE_CONTAINER_CLASS = 'pane-container';
 wysiwygTabs.TAB_CONTAINER_CLASS = 'tabs';
 wysiwygTabs.TAB_MARKER = 'content-tab';
 wysiwygTabs.DEFAULT_TAB_MARKER = 'default-content-tab';
-wysiwygTabs.PANE_END_MARKER = 'hr.pane-break';
+wysiwygTabs.PANE_END_CLASS = 'pane-break';
+wysiwygTabs.PANE_END_MARKER = 'hr.' + wysiwygTabs.PANE_END_CLASS;
 
 wysiwygTabs.DEBUG = false;
 
@@ -201,24 +202,25 @@ wysiwygTabs.constructContainer = function(tabs) {
  * Page on-load handler.
  */
 wysiwygTabs.init = function() {
-	// Check if we are in edit or view mode
+	/* Need to abuse the kupu editor to add a new <hr> tag because kupu
+	   is difficult and doesn't like people adding new features, or handling
+	   <hr /> tags*/
 	jq(function () {
 		jq('.kupu-fulleditor #toolbar').each(function () {
 		  var tb_group = jq(this).find('#kupu-bg-indent');
 		  var b_html = '<span id="#kupu-hr-buttongroup"';
 		  b_html += 'class="kupu-tb-buttongroup">';
-		  b_html += '<button title="Insert a layout table"';
+		  b_html += '<button title="Insert pane break"';
 		  b_html += ' class="kupu-inserthorizontalrule" type="button";>&nbsp;</button>';
 		  b_html += '</span>';
 		  tb_group.after(b_html);
 		});
 		jq('.kupu-inserthorizontalrule').click(function () {
 		  var editor = window.kupu;
+		  var selection = editor.getSelectedNode();
 		  var hr = editor.newElement('hr');
-		  //doc = editor.getInnerDocument();
-		  //var hr = doc.createElement('hr');
-		  //var table_tool = editor.getTool('tabletool');
-		  //table_tool.createTable(1, 2, false, 'two-column');
+		  hr.setAttribute('class', wysiwygTabs.PANE_END_CLASS );
+		  selection.appendChild(hr);
  		});
 	});
 

@@ -4,7 +4,11 @@ Changelog
 1.2 - Unreleased
 ----------------
 
-- 
+- Added working "insert pane break" button to Kupu.
+  [dunlapm]
+
+- Improve styling for the pane break in all browsers.
+  [dunlapm]
 
 1.1 - 2010-06-30
 ----------------
