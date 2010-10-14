@@ -12,6 +12,11 @@ div.pane-container ul.tabs {
       border-bottom: 1px solid #666;	
 }
 
+/* fix for Plone4, maybe content-core is better?  */
+#content ul.tabs {
+      list-style-type:none;
+      margin-left:0em;
+}
 
 /* single tab */
 div.pane-container ul.tabs li { 
