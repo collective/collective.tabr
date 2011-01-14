@@ -4,7 +4,7 @@
    http://www.alistapart.com/articles/slidingdoors2/
 */
 /* root element for tabs  */
-div.pane-container ul.tabs { 
+#content div.pane-container ul.tabs { 
       margin: 0;
       padding: 10px 10px 0;
       list-style: none;
@@ -12,14 +12,8 @@ div.pane-container ul.tabs {
       border-bottom: 1px solid #666;	
 }
 
-/* fix for Plone4, maybe content-core is better?  */
-#content ul.tabs {
-      list-style-type:none;
-      margin-left:0em;
-}
-
 /* single tab */
-div.pane-container ul.tabs li { 
+#content div.pane-container ul.tabs li { 
       float: left;
       background: url(&dtml-portal_url;/tabr_left_both.gif) no-repeat left top;
       margin: 0;
@@ -45,12 +39,12 @@ div.pane-container ul.tabs a:active {
       outline: none;
 }
 
-div.pane-container ul.tabs li.current {
+#content div.pane-container ul.tabs li.current {
       background-position: 0 -150px;
       border-width: 0;
 }
 
-div.pane-container ul.tabs li.current a {
+#content div.pane-container ul.tabs li.current a {
       background-position: 100% -150px;
       padding-bottom: 5px;
       border-width: 0;
