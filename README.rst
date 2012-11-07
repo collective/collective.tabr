@@ -21,29 +21,33 @@ until another Tab, Default Tab, or "Pane Break" is reached. For example::
 
   <h2 class="content-tab">First Tab</h2>
   <p>This is a paragraph inside the first tab</p>
-  
+
   <h2 class="default-content-tab">Second Tab</h2>
   <p>This is a paragraph inside the second tab</p>
   <p>This tab will be shown first</p>
-  
+
   <hr class="pane-break" />
-  
+
   <p>This paragraph is not inside of a tab</p>
-  
+
   <h2 class="content-tab">First Tab part 2</h2>
   <p>This paragraph will be in the first tab of the second grouping of tabs</p>
-  
+
 This will result in two groups of tabs, the first of which will contain two tabs
 of which the second will be pre-selected when the page loads. The second tab
 group will only have a single tab in it, and it will be preceded by a paragraph
 between itself and the end of the previous tab group.
 
+Source code and issue tracker
+-------------------------------
+
+* https://github.com/collective/collective.tabr
+
 Customizing
 -----------
 
-CSS is available in the ``tabr`` skin layer for customization, as are the 
+CSS is available in the ``tabr`` skin layer for customization, as are the
 example images for the CSS.
-
 
 Dependencies
 ------------

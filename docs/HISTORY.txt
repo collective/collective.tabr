@@ -4,6 +4,11 @@ Changelog
 1.3 - Unreleased
 ----------------
 
+- Github migration [miohtama]
+
+- Removed #content in the CSS selectors, so that tabs can be used with Products.ContentWellPortlets headers
+  and footers sections [miohtama]
+
 - Updates for Plone 4.
   [dunlapm]
 
@@ -11,7 +16,7 @@ Changelog
 ----------------
 
 - Added working "insert pane break" button to Kupu.
-  [dunlapm]
+  [dunlapm]sudo gem install svn2git
 
 - Improve styling for the pane break in all browsers.
   [dunlapm]
