@@ -66,13 +66,6 @@ common.
 Credits
 =======
 
-Thanks to Mikko Ohtamaa for `collective.kuputabs`_ which was my inspiration for
-this. Most of the code was his to begin with, and I ripped it appart and made
-*many* changes.
+* Michael Dunlap
 
-Also thanks to Douglas Bowman for his `CSS Sliding Doors`_ technique for the
-tab styling.
-
-.. _`collective.kuputabs`: http://pypi.python.org/pypi/collective.kuputabs
-.. _`CSS Sliding Doors`: http://www.alistapart.com/articles/slidingdoors2/
-
+* `Mikko Ohtamaa <http://opensourcehacker.com>`
