@@ -6,13 +6,20 @@ Introduction
 collective.tabr allows for easy editing of "tabbed content" using the `jQuery
 Tools Tabs`_ UI tool.
 
+.. image :: https://github.com/downloads/collective/collective.tabr/Screen%20Shot%202012-11-07%20at%2012.37.04%20PM.png
+
 Installation
 ------------
 
-Add collective.tabr to your buildout. It uses the z3c.autoinclude plugin so you
-do not need to add it to the ``zcml=`` section of your buildout.
+Add collective.tabr to your buildout::
 
-Install via the Add-on Products control panel like you would any other Product.
+  eggs = 
+    ...
+    collective.tabr
+
+Install via the Add-on Products control panel like you would any other add-on.
+
+Now new styles appear in TinyMCE editor.
 
 Usage
 -----
