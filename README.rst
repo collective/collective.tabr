@@ -1,5 +1,7 @@
+.. contents:: :local:
+
 Introduction
-============
+-------------
 
 collective.tabr allows for easy editing of "tabbed content" using the `jQuery
 Tools Tabs`_ UI tool.
@@ -64,7 +66,7 @@ common.
 .. _`plone.app.jquerytools`: http://pypi.python.org/pypi/plone.app.jquerytools
 
 Credits
-=======
+--------
 
 * Michael Dunlap
 
