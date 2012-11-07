@@ -77,4 +77,4 @@ Credits
 
 * Michael Dunlap
 
-* `Mikko Ohtamaa <http://opensourcehacker.com>`
+* `Mikko Ohtamaa <http://opensourcehacker.com>`_
