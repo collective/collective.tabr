@@ -25,7 +25,7 @@ wysiwygTabs.DEFAULT_TAB_MARKER = 'default-content-tab';
 wysiwygTabs.PANE_END_CLASS = 'pane-break';
 wysiwygTabs.PANE_END_MARKER = 'hr.' + wysiwygTabs.PANE_END_CLASS;
 
-wysiwygTabs.DEBUG = true;
+wysiwygTabs.DEBUG = false;
 
 
 wysiwygTabs.idCounter = 0;
