@@ -4,6 +4,8 @@ Changelog
 1.3 - Unreleased
 ----------------
 
+- Updated for Plone 4.3 [miohtama]
+
 - Github migration [miohtama]
 
 - Removed #content in the CSS selectors, so that tabs can be used with Products.ContentWellPortlets headers
